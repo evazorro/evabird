@@ -1,14 +1,17 @@
 import re
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from get_recent_notable_birds import get_recent_notable_birds
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    birds = get_recent_notable_birds()
-    return render_template('birds.html', birds=birds)
+    if request.method == 'POST':
+        region=request.form['region']
+        return redirect(url_for(region)) # todo, debug this
+    return render_template('index.html')
 
-@app.route('/<name>')
-def hello_world(name):
-    return render_template('hello.html.j2', name=name)
+@app.route('/<region>')
+def regional_sightings(region):
+    birds = get_recent_notable_birds(region)
+    return render_template('birds.html', region=region, birds=birds)

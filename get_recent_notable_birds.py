@@ -38,7 +38,7 @@ def get_unique_common_names(birds_list):
     return(set(birds_list))
 
 # Main
-def get_recent_notable_birds():
+def get_recent_notable_birds(region):
     """Hits eBird's "Recent notable observations in a region" API for a hardcoded region.
 
     From eBird: "Get the list of recent, notable observations (up to 30 days ago) of birds seen in a country, region or location.
@@ -51,7 +51,11 @@ def get_recent_notable_birds():
         A set containing names of birds
     """
 
-    LOCATION_ID = 'US-NY-061' # New York, NY
+    # todo: better error check
+    if not region:
+        LOCATION_ID = 'US-NY-061' # default to New York, NY
+    else:
+        LOCATION_ID = region
 
     with open('key.txt') as f:
         EBIRD_API_KEY = f.read()
@@ -60,8 +64,5 @@ def get_recent_notable_birds():
 
     r = requests.get(url, headers=header)
     recent_notable_birds = get_unique_common_names(get_list_of_common_names(r))
-
-    # for bird in recent_notable_birds:
-    #     print(bird)
 
     return recent_notable_birds
