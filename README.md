@@ -6,6 +6,7 @@ WIP projects using Cornell University's [eBird APIs](https://documenter.getpostm
 1. Clone this repo.
 1. Optionally create a new Python virtual environment.
 1. Run `pip install -r requirements.txt` to install dependencies.
+1. Run `flask --debug run` to start the application.
 
 ## Used in this project
 
