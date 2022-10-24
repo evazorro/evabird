@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h1>Recent notable bird sightings in New York, NY</h1>
+    <ul>
+      {% for bird in birds %}
+      <li>{{ bird }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

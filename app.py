@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     birds = get_recent_notable_birds()
-    return next(iter(birds))
+    return render_template('birds.html', birds=birds)
 
 @app.route('/<name>')
 def hello_world(name):
