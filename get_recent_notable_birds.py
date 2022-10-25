@@ -39,7 +39,7 @@ def get_unique_common_names(birds_list):
 
 # Main
 def get_recent_notable_birds(region):
-    """Hits eBird's "Recent notable observations in a region" API for a hardcoded region.
+    """Hits eBird's "Recent notable observations in a region" API for a passed-in region code.
 
     From eBird: "Get the list of recent, notable observations (up to 30 days ago) of birds seen in a country, region or location.
 
