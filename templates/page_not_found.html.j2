@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body>
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+
+{% block content %}
+
     <h1>Region not found</h1>
     <p>Check your region code or <a href="{{ url_for('index') }}">return home</a>.</p>
-  </body>
-</html>
+
+{% endblock %}

@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body>
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+
+{% block content %}
+
     <h1>Recent notable bird sightings in {{region_name}}</h1>
     <ul>
       {% for bird in birds %}
       <li>{{ bird }}</li>
       {% endfor %}
     </ul>
-  </body>
-</html>
+
+{% endblock %}

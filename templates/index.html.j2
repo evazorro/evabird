@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body>
-    
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
     <h1>Welcome to e(va)Bird!</h1>
 
     <p>Enter your region to see recent notable bird sightings nearby:</p>
     <form method="post">
       <input type="text"
-             name="region"
-             value="{{ request.form['region'] }}"></input>
+              name="region"
+              value="{{ request.form['region'] }}"></input>
       <button type="submit">Go</button>
     </form>
 
-  </body>
-</html>
+{% endblock %}
