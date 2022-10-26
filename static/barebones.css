@@ -176,7 +176,7 @@ body {
   font-size: 1.6rem;		/* changed from 15px in orig skeleton */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text-color-normal); 
   background-color: var(--background-color);;
 }
@@ -344,7 +344,9 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside; }
+  list-style: circle inside;
+  text-align: left; /* changed from Barebones */
+}
 ol {
   list-style: decimal inside; }
 ol, ul {
