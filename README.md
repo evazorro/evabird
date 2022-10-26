@@ -12,3 +12,4 @@ WIP projects using Cornell University's [eBird APIs](https://documenter.getpostm
 
 * [Cornell eBird API 2.0](https://documenter.getpostman.com/view/664302/S1ENwy59)
 * [Flask](https://github.com/pallets/flask)
+* [Requests](https://requests.readthedocs.io/en/latest/)

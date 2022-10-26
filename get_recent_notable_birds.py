@@ -1,7 +1,7 @@
 # Uses Cornell's eBird API
 # Docs: https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest
 
-
+from flask import abort
 import requests
 
 
@@ -20,6 +20,7 @@ def get_list_of_common_names(response):
         KeyError: If the JSON response does not have the "comName" key
     """
     birds = response.json()
+
     birds_list = []
     for bird in birds:
         birds_list.append(bird["comName"])
@@ -51,18 +52,23 @@ def get_recent_notable_birds(region):
         A set containing names of birds
     """
 
-    # todo: better error check
-    if not region:
-        LOCATION_ID = 'US-NY-061' # default to New York, NY
-    else:
-        LOCATION_ID = region
+    LOCATION_ID = region # future: verify region string _before_ calling API?
 
     with open('key.txt') as f:
         EBIRD_API_KEY = f.read()
     url = 'https://api.ebird.org/v2/data/obs/' + LOCATION_ID + '/recent/notable'
     header = {'X-eBirdApiToken': EBIRD_API_KEY}
 
-    r = requests.get(url, headers=header)
+    try:
+        r = requests.get(url, headers=header)
+        r.raise_for_status() # If eBird API returns with 4xx or 5xx, bail out
+    except requests.exceptions.HTTPError:
+        abort(404)
+
+    # If response is empty, the region code is likely incorrect
+    if r.json() == []:
+        abort(404)
+
     recent_notable_birds = get_unique_common_names(get_list_of_common_names(r))
 
     return recent_notable_birds
