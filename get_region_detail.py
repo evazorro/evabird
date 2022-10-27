@@ -39,8 +39,8 @@ def get_region_detail(region_code):
 
     LOCATION_ID = region_code
 
-    
-    EBIRD_API_KEY = os.getenv['API_KEY']
+    EBIRD_API_KEY = os.getenv('API_KEY')
+
     url = 'https://api.ebird.org/v2/ref/region/info/' + LOCATION_ID + '?regionNameFormat=detailed'
     header = {'X-eBirdApiToken': EBIRD_API_KEY}
 
