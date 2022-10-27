@@ -1,6 +1,7 @@
 # Uses Cornell's eBird API
 # Docs: https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest
 
+import os
 from flask import abort
 import requests
 
@@ -54,8 +55,8 @@ def get_recent_notable_birds(region):
 
     LOCATION_ID = region # future: verify region string _before_ calling API?
 
-    with open('key.txt') as f:
-        EBIRD_API_KEY = f.read()
+    EBIRD_API_KEY = os.getenv('API_KEY')
+
     url = 'https://api.ebird.org/v2/data/obs/' + LOCATION_ID + '/recent/notable'
     header = {'X-eBirdApiToken': EBIRD_API_KEY}
 
